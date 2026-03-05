@@ -1,1 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Тестирование</title>
 
+  <!-- Telegram Mini Apps SDK -->
+  <script src="https://telegram.org/js/telegram-web-app.js?59"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="title" id="appTitle">Тестирование</div>
+    <div class="user" id="userBadge"></div>
+  </header>
+
+  <nav class="tabs">
+    <button id="tabTests" class="tab active">Тесты</button>
+    <button id="tabResults" class="tab">Результаты</button>
+  </nav>
+
+  <main id="main"></main>
+
+  <footer class="footer">
+    <div id="status"></div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
