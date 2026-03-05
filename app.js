@@ -810,7 +810,7 @@ function renderResultsList(results) {
         <tr>
           <td style="text-align:left;">${escapeHtml(r.test_title || r.test_id || "")}</td>
           <td style="text-align:center;">${Number(r.attempt_no || 0)}</td>
-          <td style="text-align:center;">${Number(r.score || 0)}/${Number(r.max_score || 0)} (${Number(r.percent || 0)}%)</td>
+          <td style="text-align:center;">${escapeHtml(String(r.status || ""))}${r.duration_sec ? ` · ${escapeHtml(fmtDurationSecToMin(r.duration_sec))}` : ""}</td>
           <td style="text-align:center;">${escapeHtml(dt)}</td>
         </tr>
       `;
