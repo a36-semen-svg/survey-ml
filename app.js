@@ -519,7 +519,8 @@ function renderQuestion() {
           : ""
       }
 
-      <div class="muted" style="margin-top:10px;">Баллы за вопрос: ${Number(q.points || 0)}</div>
+      // <div class="muted" style="margin-top:10px;">Баллы за вопрос: ${Number(q.points || 0)}</div>
+      <div class="muted" style="margin-top:10px;">Выберите ответ</div>
 
       <div class="answers" style="margin-top:10px;">${answersHtml}</div>
 
@@ -759,9 +760,9 @@ function renderSubmitResult(r) {
   el("main").innerHTML = `
     <div class="card">
       <div style="font-weight:700; font-size:16px;">Результат</div>
-      <div style="margin-top:10px;">
-        Баллы: <b>${Number(r.score || 0)}</b> / ${Number(r.max_score || 0)} (${Number(r.percent || 0)}%)
-      </div>
+          <div style="margin-top:10px;">
+            Ответы сохранены ✅
+          </div>
       <div class="muted" style="margin-top:6px;">
         Длительность: ${escapeHtml(durationText)} · Попытка: ${Number(r.attempt_no || 1)}${escapeHtml(extra)}
       </div>
