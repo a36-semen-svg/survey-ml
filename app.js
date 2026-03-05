@@ -1,14 +1,14 @@
 // ====== CONFIG ======
 const API_BASE = "https://mlmotiv.app.n8n.cloud/webhook"; // <-- твой n8n base
 const EP = {
-  tests: "tg-tests",
-  start: "tg-start",
-  submit: "tg-submit",
-  results: "tg-results",
+  tests: "tg-polls",
+  start: "tg-start-polls",
+  submit: "tg-submit-polls",
+  results: "tg-results-polls",
 };
 
 // ====== LOCAL STORAGE (resume progress) ======
-const LS_PREFIX = "mlab_quiz_";
+const LS_PREFIX = "mlab_poll_";
 
 function lsKeyActive(testId) {
   return `${LS_PREFIX}active_${String(testId || "").trim()}`;
