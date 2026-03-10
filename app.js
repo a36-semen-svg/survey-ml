@@ -246,7 +246,7 @@ function buildTestStats(tests, resultsRaw, userTelegramId) {
     const tid = normId(r.test_id);
     if (!tid) continue;
 
-    // если теста нет в списке (на всякий случай) — добавим
+    // если опроса нет в списке (на всякий случай) — добавим
     if (!stats[tid]) {
       stats[tid] = {
         used: 0,
@@ -388,7 +388,7 @@ function renderTests() {
     })
     .join("");
 
-  el("main").innerHTML = items || `<div class="card">Нет тестов</div>`;
+  el("main").innerHTML = items || `<div class="card">Нет опросов</div>`;
 
   document.querySelectorAll("button[data-test]").forEach((btn) => {
     btn.onclick = () => startTest(btn.getAttribute("data-test"));
@@ -616,12 +616,12 @@ async function loadTests() {
   try {
     stopTimer();
     setStatus("");
-    renderLoading("Загрузка тестов...");
+    renderLoading("Загрузка опросов...");
 
-    // 1) тесты
+    // 1) опросы
     const testsRes = await apiRetry(EP.tests, {}, { retries: 1, baseDelayMs: 200 });
     if (!testsRes?.ok) {
-      throw new Error(testsRes?.error || "Не удалось загрузить тесты");
+      throw new Error(testsRes?.error || "Не удалось загрузить опросы");
     }
 
     state.user = testsRes.user;
@@ -650,16 +650,16 @@ async function startTest(testId) {
   try {
     stopTimer();
     setStatus("");
-    renderLoading("Старт теста...");
+    renderLoading("Старт опроса...");
 
     const r = await api(EP.start, { testId });
 
     if (!r?.ok) {
-      const msg = String(r?.error || "Не удалось стартовать тест");
+      const msg = String(r?.error || "Не удалось стартовать опрос");
 
       // Мягко обрабатываем "Попытки закончились":
       // - не показываем красную ошибку
-      // - просто обновляем список тестов, чтобы кнопка исчезла и стало 2/2
+      // - просто обновляем список опросов, чтобы кнопка исчезла и стало 2/2
       if (/попытки\s+закончились/i.test(msg)) {
         setStatus("Попытки закончились");
         await loadTests();
@@ -767,7 +767,7 @@ function renderSubmitResult(r) {
         Длительность: ${escapeHtml(durationText)} · Попытка: ${Number(r.attempt_no || 1)}${escapeHtml(extra)}
       </div>
       <div class="row" style="margin-top:12px;">
-        <button class="btn secondary" id="btnToTests">К тестам</button>
+        <button class="btn secondary" id="btnToTests">К опросам</button>
         <button class="btn" id="btnToResults">Мои результаты</button>
       </div>
     </div>
