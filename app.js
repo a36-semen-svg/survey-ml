@@ -154,12 +154,15 @@ async function api(path, data = {}) {
 
   const res = await fetch(`${API_BASE}/${path}`, {
     method: "POST",
-    headers: { "Content-Type": "text/plain;charset=UTF-8" },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
     cache: "no-store",
   });
 
   const text = await res.text();
+  console.log("API request:", path, payload);
+  console.log("HTTP status:", res.status);
+  console.log("API raw response:", text);
 
   let json;
   try {
